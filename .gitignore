@@ -1,4 +1,6 @@
 /esp
 /target/
 Cargo.lock
+*.fd
 **/*.rs.bk
+.buildconfig
