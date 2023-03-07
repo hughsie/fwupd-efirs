@@ -31,11 +31,6 @@ use alloc::{vec, vec::Vec};
 
 use uefi::CStr16;
 
-//fn fwupd_delete_variable(t: &RuntimeServices, name: &CStr16, guid: Guid) -> Result {
-//    t.set_variable(name, &VariableVendor(guid), VariableAttributes::RUNTIME_ACCESS, &[]);
-//    Ok(())
-//}
-
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 const FWUPDATE_GUID: Guid = guid!("0abba7dc-e516-4167-bbf5-4d9d1c739416");
@@ -137,11 +132,9 @@ fn main(_image_handle: Handle, mut system_table: SystemTable<Boot>) -> Status {
     let bs = system_table.boot_services();
     let rt = system_table.runtime_services();
 
-    rt.set_variable(
+    rt.delete_variable(
         cstr16!("FWUPDATE_DEBUG_LOG"),
         &VariableVendor(FWUPDATE_GUID),
-        VariableAttributes::empty(),
-        &[],
     )
     .unwrap_or_else(|error| {
         if error.status() == uefi::Status::NOT_FOUND {
