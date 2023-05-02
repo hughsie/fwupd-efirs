@@ -4,7 +4,6 @@
 
 #![no_main]
 #![no_std]
-#![feature(abi_efiapi)]
 #![allow(stable_features)]
 #![allow(unused_imports)]
 #![allow(dead_code)]

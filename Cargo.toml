@@ -2,6 +2,7 @@
 name = "fwupd-efirs"
 version = "0.1.0"
 edition = "2021"
+publish = false
 
 [dependencies]
 #bincode = "1.3.3"
@@ -14,9 +15,14 @@ log = "0.4"
 #             - unstable
 
 #uefi = "0.19.1"
-uefi = { version = "0.19.1", features = ["alloc"] }
-uefi-services = "0.16"
+uefi = { version = "0.20.0", features = ["alloc"] }
+uefi-services = "0.17.0"
+uefi-macros = "0.11.0"
 
 [patch.crates-io]
-uefi = { git = "https://github.com/rust-osdev/uefi-rs.git", branch = "main" }
-uefi-services = { git = "https://github.com/rust-osdev/uefi-rs.git", branch = "main" }
+#uefi = { git = "https://github.com/rust-osdev/uefi-rs.git", rev = "f0dc93ac92a7a8d9a4bcca49cb3e15febcb633bf" }
+#uefi-services = { git = "https://github.com/rust-osdev/uefi-rs.git", rev = "f0dc93ac92a7a8d9a4bcca49cb3e15febcb633bf" }
+uefi = { path = "../uefi-rs/uefi" }
+uefi-services = { path = "../uefi-rs/uefi-services" }
+uefi-raw = { path = "../uefi-rs/uefi-raw" }
+uefi-macros = { path = "../uefi-rs/uefi-macros" }
